@@ -7,6 +7,7 @@ class HomeController < ApplicationController
     def create
         newcat = Cat.new(
             name: params[:name],
+            friendly: params[:friendly],
             weight: params[:weight],
             color: params[:color])
         newcat.save
