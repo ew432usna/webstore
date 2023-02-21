@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>My Webstore</title>
+<%= stylesheet_link_tag "main" %>
+</head>
+<body>
+<h1> Welcome to my webstore!</h1>
+<h3> Written by <%= @name %> </h3>
+
+<h2>Take the poll! What is your favorite color?</h2>
+
+
+<hr/>
+
+<table>
+<thead>
+<th>Name</th><th>Weight</th><th>Color</th>
+</thead>
+    <tbody>
+        <% @cats.each do |cat| %>
+        <tr>
+            <td><img src="<%=cat.image%>"></td>
+            <td><%= cat.name %></td>
+            <td><%= cat.weight %></td>
+            <td><%= cat.color %></td>
+        <%end %>
+    </tbody>
+</table>
+<hr/>
+<h2>Add a new cat!</h2>
+
+<!-- HTML Form -->
+<form action="/cats" method="POST">
+    <input name="name" type="text" placeholder="cat name">
+    <input name="weight" type="number" placeholder="cat weight">
+    <input name="color" type="text" placeholder="color">
+    <input type="submit">
+</form>
+
+
+Visit my <%= link_to "about page", "/about"%>
+</body>
+</html>
