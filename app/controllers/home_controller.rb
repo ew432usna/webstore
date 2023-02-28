@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     http_basic_authenticate_with name: "dhh", password: "secret"
 
     def create
+        # should really think about dogs
         newcat = Cat.new(
             name: params[:name],
             friendly: params[:friendly],
