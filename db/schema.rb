@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_15_153619) do
-  create_table "cats", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_03_06_140937) do
+  create_table "blogs", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
     t.string "name"
-    t.integer "weight"
-    t.string "color"
+    t.string "description"
+    t.integer "quantity"
+    t.string "image"
+    t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

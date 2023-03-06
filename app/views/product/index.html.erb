@@ -1,0 +1,38 @@
+<!-- cart banner -->
+<% if @item_count >0%>
+  <div class="alert alert-primary">
+    You have <%=pluralize(@item_count,"item")%> in your cart &mdash; <%= link_to "Checkout", view_cart_path %>
+  </div>
+<% end %>
+
+<!-- flash message -->
+<% if flash[:notice] %>
+    <div class="alert alert-success"> <%= flash[:notice]%> </div>
+<% end %>
+
+<!-- product listing -->
+<div class="row">
+<% @products.each do |product| %>
+<div class="card m-2" style="width: 18rem; background-color: #efe4b07a">
+  <!-- product image -->
+  <%= image_tag product.image, class: "card-img-top rounded mt-2" %>
+  <!-- quantity available -->
+  <% if product.quantity == 0 %>
+    <span class="badge bg-danger">sold out</span>
+  <% elsif product.quantity < 3 %>
+    <span class="badge bg-warning">only <%= product.quantity %> left! </span>
+  <% else %>
+    <span class="badge bg-secondary"><%= product.quantity %> available </span>
+  <% end %>
+  <!-- title, price, and description -->
+  <div class="card-body">
+    <h5 class="card-title"><%= product.name%>: <%=number_to_currency product.price%></h5>
+    <p class="card-text"><%= product.description%></p>
+    <!-- buy button -->
+    <% if product.quantity > 0 %>
+      <%= link_to "Add To Cart", add_to_cart_path(product), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+<% end %>
+</div>

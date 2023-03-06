@@ -1,28 +1,12 @@
 class HomeController < ApplicationController
-    layout false
-    # keep our form simple...
-    skip_before_action :verify_authenticity_token
-    http_basic_authenticate_with name: "dhh", password: "secret"
 
-    def create
-        # should really think about dogs
-        newcat = Cat.new(
-            name: params[:name],
-            friendly: params[:friendly],
-            weight: params[:weight],
-            color: params[:color])
-        newcat.save
-        redirect_to '/'
+    # holds miscellaneous routes
+
+    def root
+        redirect_to :storefront #uses the :as parameter of the /products route
     end
 
-    def index
-        @name = "John Donnal"
-        @cats = Cat.all
-
-    end
-
-
-    def about
+    def team
     end
 
 end
