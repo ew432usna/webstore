@@ -1,35 +1,38 @@
 class AdminController < ApplicationController
   
+  # protect the admin actions
+  http_basic_authenticate_with name: "ew432", password: "usnausna"
+
   # GET /admin
   def index
     # show the form to add a new products and blogs
-    @products = Product.all
-    @posts = Blog.all
+    @product = Product.new
+    @post = Blog.new
   end
 
   # POST /admin/products
-  def create
+  def create_product
     # create a new product
     Product.create(
-      name: params[:name],
-      description: params[:description],
-      quantity: params[:quantity],
-      price: params[:price],
-      image: params[:image]
+      name: params[:product][:name],
+      description: params[:product][:description],
+      quantity: params[:product][:quantity],
+      price: params[:product][:price],
+      image: params[:product][:image]
     )
     flash[:notice] = "Created new product"
-    redirect_to index_url
+    redirect_to :admin_index
   end
   
   # POST /admin/blog
-  def create
+  def create_blog
     # create a new blog post
     Blog.create(
-      title: params[:name],
-      content: params[:description]
+      title: params[:blog][:name],
+      content: params[:blog][:description]
     )
     flash[:notice] = "Created new blog post"
-    redirect_to index_url
+    redirect_to :admin_index
   end
 
 end

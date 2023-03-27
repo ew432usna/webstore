@@ -1,0 +1,10 @@
+<h1 class="display-3"> My AI Powered Blog :)</h1>
+<hr/>
+<% @posts.each do |post| %>
+<p class="display-6">
+<%= post.title %>
+</p>
+<p style="white-space: pre-wrap">
+<%= post.content %>
+</p>
+<% end %>

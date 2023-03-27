@@ -1,2 +1,47 @@
-<h1>Admin#index</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
+
+<h1 class="bg-warning"> Webstore Administration </h1>
+<!-- flash message -->
+<% if flash[:notice] %>
+    <div class="alert alert-success"> <%= flash[:notice]%> </div>
+<% end %>
+<hr/>
+
+<h3>New Product </h3>
+<%= form_with url: :create_product, model: @product do |form| %>
+    <div class="mb-3">
+    <label class="form-label">Name</label>
+    <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Description</label>
+    <%= form.text_field :description, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Quantity</label>
+    <%= form.text_field :quantity, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Image</label>
+    <%= form.text_field :image, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Price</label>
+    <%= form.text_field :price, class: "form-control" %>
+    </div>
+    
+    <%= form.submit class: "btn btn-primary" %>
+<% end %>
+<hr/>
+<h3 class="mt-4">New Blog Post </h3>
+
+<%= form_with url: :create_blog, model: @post do |form| %>
+    <div class="mb-3">
+    <label class="form-label">Title</label>
+    <%= form.text_field :title, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+    <label class="form-label">Content</label>
+    <%= form.text_area :content, rows: "3", class: "form-control" %>
+    </div>
+    <%= form.submit class: "btn btn-primary" %>
+<% end %>

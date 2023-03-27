@@ -10,14 +10,31 @@
 
   <body>
   <div class="container">
-  <!-- header -->
-   <div class="row bg-light mb-4 border-bottom border-dark border-1""> 
-        <div class="col">
-          <%= image_tag("wrc.png", width: "50", class: "align-text-bottom")%>
-          <h1 class="display-3 d-inline">EW432 Store</h1>
+    <!-- navbar -->
+    <nav class="navbar  navbar-expand-lg navbar-light bg-light border-bottom border-dark border-1">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <%= image_tag("wrc.png", width: "30", class: "d-inline-block align-bottom")%> 
+          <!-- page title -->
+          EW432 Store
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <!-- navbar links -->
+            <%= link_to "Blog", "/blog", class: "nav-link" %>
+            <%= link_to "Team", "/team", class: "nav-link" %>
+            <%= link_to "Admin", "/admin", class: "nav-link" %>
         </div>
-      </div>
-    <%= yield %>
-    </div>
+      </div>        
+    </nav>
+  
+    <!-- page content -->
+    <div>
+      <%= yield %>
+    </div> 
+  
   </body>
 </html>
