@@ -8,6 +8,12 @@ class ProductController < ApplicationController
     @products = Product.all
   end
 
+  def api
+    @products = Product.all
+    render json: @products and return
+  end
+
+
   # POST /products/:id/buy
   def add_to_cart
     # add the selected item to the cart cookie

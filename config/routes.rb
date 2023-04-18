@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/products/:id/buy', to: 'product#add_to_cart', as: 'add_to_cart'
   get '/products/cart', to: 'product#view_cart', as: 'view_cart'
   get '/products/checkout', to: 'product#checkout', as: 'checkout'
+  get '/products/api', to: 'product#api'
   
   # routes for viewing other public pages (Home Controller)
   get '/blog', to: 'home#blog', as: 'blog'
